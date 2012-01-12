@@ -227,7 +227,7 @@ withjQuery(function($, window){
 			}
 		}
 		var highLightRow = function(row) {
-			$(row).css("background-color", "#D1E1F1");
+			$(row).css("background-color", "#FFA042");
 		}
 		var highLightCell = function(cell) {
 			$(cell).css("background-color", "#2CC03E");
