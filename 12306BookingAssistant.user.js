@@ -332,7 +332,7 @@ withjQuery(function($, window){
 					else if ( msg.indexOf('请输入正确的验证码') > -1 ) {
 						alert('请输入正确的验证码！');
 					} else if ( msg.indexOf('当前访问用户过多') > -1 ){
-						reLogin();
+						reLogin(msg);
 					} else if( msg.match(/var\s+isLogin\s*=\s*true/i) ) {
 						notify('登录成功，开始查询车票吧！');
 						window.location.replace( queryurl );
@@ -342,15 +342,15 @@ withjQuery(function($, window){
 					}
 				},
 				error: function(msg){
-					reLogin();
+					reLogin(msg);
 				}
 			});
 		}
 
 		var count = 1;
-		function reLogin(){
+		function reLogin(msg){
 			count ++;
-			$('#refreshButton').html("("+count+")次登录中...");
+			$('#refreshButton').html("("+count+")次登录中..."+msg);
 			setTimeout(submitForm, 2000);
 		}
 		//初始化
