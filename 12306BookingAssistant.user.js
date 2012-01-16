@@ -198,7 +198,7 @@ withjQuery(function($, window){
 			}
 		}
 		var highLightRow = function(row) {
-			$(row).css("background-color", "#D1E1F1");
+			$(row).css("background-color", "#FFA042");
 		}
 		var highLightCell = function(cell) {
 			$(cell).css("background-color", "#2CC03E");
@@ -326,7 +326,10 @@ withjQuery(function($, window){
 				success: function(msg){
 					//密码输入错误
 					//您的用户已经被锁定
-					if ( msg.indexOf('请输入正确的验证码') > -1 ) {
+					if ( msg.indexOf('已锁定') > -1 ) {
+						alert('请喝杯茶休息下,玩的太猛啦!');
+					}
+					else if ( msg.indexOf('请输入正确的验证码') > -1 ) {
 						alert('请输入正确的验证码！');
 					} else if ( msg.indexOf('当前访问用户过多') > -1 ){
 						reLogin();
