@@ -332,7 +332,7 @@ withjQuery(function($, window){
 					else if ( msg.indexOf('请输入正确的验证码') > -1 ) {
 						alert('请输入正确的验证码！');
 					} else if ( msg.indexOf('当前访问用户过多') > -1 ){
-						reLogin(msg);
+						reLogin('当前访问用户过多');
 					} else if( msg.match(/var\s+isLogin\s*=\s*true/i) ) {
 						notify('登录成功，开始查询车票吧！');
 						window.location.replace( queryurl );
