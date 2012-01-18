@@ -197,7 +197,7 @@ withjQuery(function($, window){
 			}
 		}
 		var highLightRow = function(row) {
-			$(row).css("background-color", "#D1E1F1");
+			$(row).css("background-color", "#FFA042");
 		}
 		var highLightCell = function(cell) {
 			$(cell).css("background-color", "#2CC03E");
@@ -319,13 +319,15 @@ withjQuery(function($, window){
 						xhr.setRequestHeader('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8');
 					}catch(e){};
 				},
-				timeout: 30000,
+				timeout: 40000,
 				//cache: false,
 				//async: false,
 				success: function(msg){
 					//密码输入错误
 					//您的用户已经被锁定
-					if ( msg.indexOf('请输入正确的验证码') > -1 ) {
+					if ( msg.indexOf('已锁定') > -1 ) {
+						alert('请喝杯茶休息下,玩的太猛啦!');
+					} else if ( msg.indexOf('请输入正确的验证码') > -1 ) {
 						alert('请输入正确的验证码！');
 					} else if ( msg.indexOf('当前访问用户过多') > -1 ){
 						reLogin();
@@ -334,7 +336,10 @@ withjQuery(function($, window){
 						window.location.replace( queryurl );
 					} else {
 						msg = msg.match(/var\s+message\s*=\s*"([^"]*)/);
-						alert( msg && msg[1] || "未知错误" );
+						if (!msg[1].equals(""))
+							alert( msg && msg[1] || "未知错误" );
+						else
+							reLogin();
 					}
 				},
 				error: function(msg){
